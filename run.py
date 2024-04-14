@@ -28,6 +28,7 @@ def input_type():
 
     return data_str
 
+
 def validate_data(input):
     """
     Test user input matches options provided
@@ -40,12 +41,24 @@ def validate_data(input):
 
     return True
 
+def update(input):
+    if input == "new":
+        return input
+    elif input == "update":
+        return input
+
+
+
+
+
+
+
 
 def main():
     """
     run all functions
     """
-    input_type()
-
+    input = input_type()
+    update(input)
 print("Welcome to the Subshop")
 main()
