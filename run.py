@@ -111,10 +111,10 @@ def update(data):
         if item_name in first_col_stock:
             df = pd.DataFrame(items_data)
             grade = np.where(df[:][0] == item_name)
-            index = int(grade[0])
+            index = (grade[0])[0]
             item_code = (items_data[index])[1]
             sales = int(input('Please enter how many items were sold: \n'))
-            min_stock = int(input('Please enter the minimum stock required: \n'))
+            min_stock = int(input('Please enter the minimum stock required for tomorrow: \n'))
             stock_on_hand = min_stock - sales
             to_bake = min_stock - stock_on_hand
             stock.update_cell(index+1,3, sales)
