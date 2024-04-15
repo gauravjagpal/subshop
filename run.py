@@ -34,22 +34,22 @@ def run_intro():
     # Multiline print statement will show the necessary information to the user for
     # program operation. Creating visual clarity through line separation.
     print('''
-    <==============================================================================================>
-    Welcome to the Subshop! Coded by Gaurav Jagpal (c) 2024.
-          
-    The Subshop's inventory tool will easily calculate your shop requirements so you
-    know what is needed for the next day.
-          
-    The Subshop tool will ask you to provide information such as:
-          - new/update (to know whether you plan on adding a new item or update an existing one)
-          - If you select "new", it will also ask you for the item name, the min stock required,
-            the time to bake, cost of the item, sale price and it will calculate the profit.
-            It will then append this to the "items" tab and "stock" tab of your worksheet.
-          - If you select "update", it will automatically bring the item_code from the "items" tab,
-            it will ask you how many items were sold, the minimum stock required and then it will
-            calculate the stock on hand and the amount you need to bake.
+<==============================================================================================>
+Welcome to the Subshop! Coded by Gaurav Jagpal (c) 2024.
+        
+The Subshop's inventory tool will easily calculate your shop requirements so you know what 
+is needed for the next day.
+        
+The Subshop tool will ask you to provide information such as:
+    - new/update (to know whether you plan on adding a new item or update an existing one)
+    - If you select "new", it will also ask you for the item name, the min stock required,
+      the time to bake, cost of the item, sale price and it will calculate the profit.
+      It will then append this to the "items" tab and "stock" tab of your worksheet.
+    - If you select "update", it will automatically bring the item_code from the "items" tab,
+      it will ask you how many items were sold, the minimum stock required and then it will
+      calculate the stock on hand and the amount you need to bake.
 
-    <==============================================================================================>
+<==============================================================================================>
     ''')
 
 def input_type():
@@ -117,8 +117,8 @@ def update(data):
             grade = np.where(df[:][0] == item_name)
             index = (grade[0])[0]
             item_code = (items_data[index])[1]
-            sales = int(input('Please enter how many items were sold: \n'))
-            min_stock = int(input('Please enter the minimum stock required for tomorrow: \n'))
+            sales = int(input('Please enter how many items were sold:'))
+            min_stock = int(input('Please enter the minimum stock required for tomorrow:'))
             stock_on_hand = min_stock - sales
             to_bake = min_stock - stock_on_hand
             stock.update_cell(index+1,3, sales)
