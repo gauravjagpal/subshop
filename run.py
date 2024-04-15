@@ -4,17 +4,22 @@ import random
 import pandas as pd
 import numpy as np
 
+
+# Set scope for Google IAM authentication for the APIs the program has
+# access to.
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
     ]
 
+# Declaring CONSTS
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('subshop')
 
+# Extracting data to be used in program
 items = SHEET.worksheet('items')
 items_data = items.get_all_values()
 stock = SHEET.worksheet('stock')
@@ -102,7 +107,7 @@ def update(data):
         
     elif data == "update":
         """
-        Update existing items
+        Update existing items located in stock tab
         """
         item_name = input('Please enter product name: \n')
         df = SHEET.worksheet('stock')
