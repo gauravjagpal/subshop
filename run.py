@@ -2,7 +2,6 @@ import gspread
 from google.oauth2.service_account import Credentials
 import random
 import pandas as pd
-import seaborn as sns
 import numpy as np
 
 SCOPE = [
@@ -124,13 +123,6 @@ def update(data):
         else:
             print('This item is not in the current stock. Please add as a new item.')
         return data
-
-
-
-
-
-
-
 
 def main():
     """
