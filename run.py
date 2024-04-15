@@ -91,8 +91,6 @@ def update(data):
             min_stock = int(input('Please enter the minimum stock required: \n'))
             stock_on_hand = min_stock - sales
             to_bake = min_stock - stock_on_hand
-            stock_to_update = [item_name], [item_code], [sales], [min_stock], [stock_on_hand], [to_bake]
-            stock_data[index] = stock_to_update
             stock.update_cell(index+1,3, sales)
             stock.update_cell(index+1,4, min_stock)
             stock.update_cell(index+1,5, stock_on_hand)
