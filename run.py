@@ -22,6 +22,32 @@ stock = SHEET.worksheet('stock')
 stock_data = items.get_all_values()
 
 
+def run_intro():
+    """
+    This function will introduce the user to the application
+    and notifies them of the program scope.
+    """
+    # Multiline print statement will show the necessary information to the user for
+    # program operation. Creating visual clarity through line separation.
+    print('''
+    <=============================================================================>
+    Welcome to the Subshop! Coded by Gaurav Jagpal (c) 2024.
+          
+    The Subshop's inventory tool will easily calculate your shop requirements so you
+    know what is needed for the next day.
+          
+    The Subshop tool will ask you to provide information such as:
+          - new/update (to know whether you plan on adding a new item or update an existing one)
+          - If you select "new", it will also ask you for the item name, the min stock required,
+            the time to bake, cost of the item, sale price and it will calculate the profit.
+            It will then append this to the "items" tab and "stock" tab of your worksheet.
+          - If you select "update", it will automatically bring the item_code from the "items" tab,
+            it will ask you how many items were sold, the minimum stock required and then it will
+            calculate the stock on hand and the amount you need to bake.
+
+    <=============================================================================>
+    ''')
+
 def input_type():
     """
     User input for whether to add a new item or to update an item
@@ -112,5 +138,6 @@ def main():
     """
     input = input_type()
     update(input)
+    run_intro()
 print("Welcome to the Subshop \n")
 main()
