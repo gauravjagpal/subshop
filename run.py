@@ -30,7 +30,7 @@ def run_intro():
     # Multiline print statement will show the necessary information to the user for
     # program operation. Creating visual clarity through line separation.
     print('''
-    <=============================================================================>
+    <==============================================================================================>
     Welcome to the Subshop! Coded by Gaurav Jagpal (c) 2024.
           
     The Subshop's inventory tool will easily calculate your shop requirements so you
@@ -45,7 +45,7 @@ def run_intro():
             it will ask you how many items were sold, the minimum stock required and then it will
             calculate the stock on hand and the amount you need to bake.
 
-    <=============================================================================>
+    <==============================================================================================>
     ''')
 
 def input_type():
@@ -136,8 +136,8 @@ def main():
     """
     run all functions
     """
+    run_intro()
     input = input_type()
     update(input)
-    run_intro()
 print("Welcome to the Subshop \n")
 main()
