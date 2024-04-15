@@ -2,6 +2,9 @@ import gspread
 from google.oauth2.service_account import Credentials
 import random
 import pandas as pd
+import seaborn as sns
+import numpy as np
+
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -17,6 +20,7 @@ items = SHEET.worksheet('items')
 items_data = items.get_all_values()
 stock = SHEET.worksheet('stock')
 stock_data = items.get_all_values()
+
 
 def input_type():
     """
@@ -44,6 +48,7 @@ def validate_data(data):
 
     return True
 
+
 def update(data):
     if data == "new":
         """
@@ -51,9 +56,9 @@ def update(data):
         """
         item_name = input('Please enter product name: \n')
         df = SHEET.worksheet('items')
-        first_col = df.col_values(1)
-        if item_name in first_col:
-            print('This item is already being produced. Please choose to update instead')
+        first_col_items = df.col_values(1)
+        if item_name in first_col_items:
+            print('This item is already being produced. Please choose to update instead.')
         else:
             item_code = item_name[0:3] + str(random.randrange(100,999))
             min_stock = int(input('Please enter the minimum stock required: \n'))
@@ -75,13 +80,23 @@ def update(data):
         Update existing items
         """
         item_name = input('Please enter product name: \n')
-        #item_code = *VLOOKUP*
-        sales = int(input('Please enter how many items were sold: \n'))
-        min_stock = int(input('Please enter the minimum stock required: \n'))
-        stock_on_hand = min_stock - sales
-        to_bake = min_stock - stock_on_hand
-        stock_to_update = [item_name, item_code, sales, min_stock, stock_on_hand, to_bake]
-    return data
+        df = SHEET.worksheet('stock')
+        first_col_stock = df.col_values(1)
+        if item_name in first_col_stock:
+            df = pd.DataFrame(items_data)
+            grade = np.where(df[:][0] == item_name)
+            index = int(grade[0])
+            item_code = (items_data[index])[1]
+            sales = int(input('Please enter how many items were sold: \n'))
+            min_stock = int(input('Please enter the minimum stock required: \n'))
+            stock_on_hand = min_stock - sales
+            to_bake = min_stock - stock_on_hand
+            stock_to_update = [item_name, item_code, sales, min_stock, stock_on_hand, to_bake]
+            print(stock_to_update)
+            stock.append_row(stock_to_update)
+        else:
+            print('This item is not in the current stock. Please add as a new item.')
+        return data
 
 
 
@@ -96,5 +111,5 @@ def main():
     """
     input = input_type()
     update(input)
-print("Welcome to the Subshop")
+print("Welcome to the Subshop \n")
 main()
