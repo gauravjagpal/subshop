@@ -117,8 +117,8 @@ def update(data):
             grade = np.where(df[:][0] == item_name)
             index = (grade[0])[0]
             item_code = (items_data[index])[1]
-            sales = int(input('Please enter how many items were sold:'))
-            min_stock = int(input('Please enter the minimum stock required for tomorrow:'))
+            sales = int(input('Please enter how many items were sold:\n'))
+            min_stock = int(input('Please enter the minimum stock required for tomorrow:\n'))
             stock_on_hand = min_stock - sales
             to_bake = min_stock - stock_on_hand
             stock.update_cell(index+1,3, sales)
@@ -126,8 +126,16 @@ def update(data):
             stock.update_cell(index+1,5, stock_on_hand)
             stock.update_cell(index+1,6, to_bake)
         else:
-            print('This item is not in the current stock. Please add as a new item.')
+            print('This item is not in the current stock. Please add as a new item.\n')
         return data
+    
+
+def return_data(stock_data):
+    """
+    Displays the output of the latest data set as a DataFrame
+    """
+    df = pd.DataFrame(stock_data)
+    print(df)
 
 def main():
     """
@@ -136,6 +144,6 @@ def main():
     run_intro()
     input = input_type()
     update(input)
-    print(stock)
+    return_data(stock_data)
 print("Welcome to the Subshop \n")
 main()
