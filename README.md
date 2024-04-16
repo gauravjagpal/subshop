@@ -1,4 +1,15 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+
+![Image source Logo](images/subshop.png)
+
+[Image source](https://www.unileverfoodsolutions.com.au/recipe/baguette-with-roasted-salmon-and-lime-chilli-mayonnaise-R0022179.html)
+
+Program live link: The app has succesfully been deployed and can be viewed on <a href="" target="_blank">Heroku</a>
+
+Accompanying Spreadsheet: <a href="https://docs.google.com/spreadsheets/d/18cGqHrZWaSvZ3V6-gzhmV5peyCnDMR-ogmTHfpfYHII/edit#gid=0" target="_blank">Google Sheets</a>
+
+
+
+
 
 Welcome,
 
@@ -14,7 +25,7 @@ This is the Code Institute student template for deploying your third portfolio p
 
 When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
 
-1. `heroku/python`
+1. `heroku/python![alt text](image.png)`
 2. `heroku/nodejs`
 
 You must then create a _Config Var_ called `PORT`. Set this to `8000`
