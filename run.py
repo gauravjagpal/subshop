@@ -136,5 +136,6 @@ def main():
     run_intro()
     input = input_type()
     update(input)
+    print(stock)
 print("Welcome to the Subshop \n")
 main()
