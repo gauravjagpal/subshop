@@ -23,7 +23,7 @@ SHEET = GSPREAD_CLIENT.open('subshop')
 items = SHEET.worksheet('items')
 items_data = items.get_all_values()
 stock = SHEET.worksheet('stock')
-stock_data = items.get_all_values()
+stock_data = stock.get_all_values()
 
 
 def run_intro():
@@ -134,6 +134,7 @@ def return_data(stock_data):
     """
     Displays the output of the latest data set as a DataFrame
     """
+    print('Thank you for your inputs. Please see below for the latest stock data: \n\n')
     df = pd.DataFrame(stock_data)
     print(df)
 
