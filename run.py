@@ -134,7 +134,7 @@ def return_data(stock_data):
     """
     Displays the output of the latest data set as a DataFrame
     """
-    print('Thank you for your inputs. Please see below for the latest stock data: \n\n')
+    print('Thank you for your using the tool. Please see below for the latest stock data: \n\n')
     df = pd.DataFrame(stock_data)
     print(df)
 
