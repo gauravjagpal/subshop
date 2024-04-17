@@ -129,6 +129,11 @@ def update(data):
             print('This item is not in the current stock. Please add as a new item.\n')
         return data
     
+def reuse(data):
+    again = input('Would you like to input more data? Please enter "Yes" or any key to escape\n')
+    if again == 'yes':
+        update(data)
+
 
 def return_data(stock_data):
     """
@@ -145,6 +150,8 @@ def main():
     run_intro()
     input = input_type()
     update(input)
-    return_data(stock_data)
+    stock2 = SHEET.worksheet('stock')
+    stock_data2 = stock2.get_all_values()
+    return_data(stock_data2)
 print("Welcome to the Subshop \n")
 main()
