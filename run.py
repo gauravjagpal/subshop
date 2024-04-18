@@ -77,13 +77,13 @@ delete = ["delete", "DELETE", "Delete"]
 user_options = new + updater + delete
 
 
-def validate_data(data_str):
+def validate_data(data):
     """
     Test user input matches options provided
     """
     try:
-        if data_str not in user_options:
-            raise ValueError(f'You entered {data_str}, you need to enter "new",'
+        if data not in user_options:
+            raise ValueError(f'You entered {data}, you need to enter "new",'
                              ' "update" or "delete" to continue')
     except ValueError as e:
         print(f'Invalid data: {e}, please try again. \n')
@@ -91,6 +91,28 @@ def validate_data(data_str):
 
     return True
 
+
+def input_int(data):
+  while True:
+    try:
+       userInput = int(input(data))       
+    except ValueError:
+       print("Not an integer! Try again.")
+       continue
+    else:
+       return userInput
+    
+
+def input_float(data):
+  while True:
+    try:
+       userInput = float(input(data))       
+    except ValueError:
+       print("Please enter a number.")
+       continue
+    else:
+       return userInput
+     
 
 def update(data):
     if data in new:
@@ -105,14 +127,14 @@ def update(data):
                   'Please choose to update instead.')
         else:
             item_code = item_name[0:3] + str(random.randrange(100, 999))
-            min_stock = int(input('Please enter the minimum stock required:'
-                                  '\n'))
-            make_time_mins = int(input('Please enter how long the item takes'
-                                       ' to cook (in minutes):\n'))
-            cost = float(input('How much does this item cost to prepare?'
-                               ' (e.g 0.20) \n'))
-            sale_price = float(input('How much will this item sell for:'
-                                     ' (e.g 1.30)\n'))
+            min_stock = input_int('Please enter the minimum stock required:'
+                                  '\n')
+            make_time_mins = input_int('Please enter how long the item takes'
+                                       ' to cook (in minutes):\n')
+            cost = input_float('How much does this item cost to prepare?'
+                               ' (e.g 0.20) \n')
+            sale_price = input_float('How much will this item sell for:'
+                                     ' (e.g 1.30)\n')
             profit = sale_price - cost
             items_to_update = [item_name, item_code, min_stock,
                                make_time_mins, cost, sale_price, profit]
@@ -139,15 +161,15 @@ def update(data):
             index = (grade[0])[0]
 
             # User inputs
-            sales = int(input('Please enter how many items were sold:\n'))
-            min_stock = int(input('Please enter the minimum stock'
-                                  ' required for tomorrow:\n'))
-            make_time_mins = int(input('How many minutes will it take'
-                                       ' to make the item:\n'))
-            cost = float(input('How much does this item cost to prepare?'
-                               ' (e.g 0.20) \n'))
-            sale_price = float(input('How much will this item sell for:'
-                                     ' (e.g 1.30)\n'))
+            sales = input_int('Please enter how many items were sold:\n')
+            min_stock = input_int('Please enter the minimum stock'
+                                  ' required for tomorrow:\n')
+            make_time_mins = input_int('How many minutes will it take'
+                                       ' to make the item:\n')
+            cost = input_float('How much does this item cost to prepare?'
+                               ' (e.g 0.20) \n')
+            sale_price = input_float('How much will this item sell for:'
+                                     ' (e.g 1.30)\n')
 
             # Formulas
             stock_on_hand = min_stock - sales
@@ -206,18 +228,6 @@ def return_data(stock_data):
     """
     df = pd.DataFrame(stock_data)
     print(df)
-
-
-def validate_int(data):
-    """
-    Validate user input to ensure they enter an integer
-    """
-    while True:
-        try:
-            data = int(input("Enter an integer: "))
-            break
-        except ValueError:
-            print("You must enter an integer number")
 
 def main():
     """
