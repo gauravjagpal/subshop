@@ -167,10 +167,11 @@ def update(data):
         print('You do not currently produce this item')
 
 
-#def reuse():
-#    again = input('Would you like to input more data? Please enter "Yes" or any key to escape\n')
-#    if again == 'yes':
-#        main()
+def reuse():
+    again = input('Would you like to input more data? Please enter "Yes" or any key to escape\n')
+    yes = {'yes','Yes', 'y', 'Y'}
+    if again == 'Yes' :
+        main()
 
 
 def return_data(stock_data):
@@ -184,7 +185,6 @@ def main():
     """
     run all functions
     """
-    run_intro()
     input = input_type()
     update(input)
     items2 = SHEET.worksheet('items')
@@ -198,7 +198,8 @@ def main():
     print('You store has the below requirements')
     return_data(stock_data2)
 
-
+#Run intro first as if the user wants to reuse the tool, we don't want the intro to run again
+run_intro()
 print("Welcome to the Subshop \n")
 main()
-#reuse()
+reuse()
