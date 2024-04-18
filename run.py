@@ -3,7 +3,6 @@ from google.oauth2.service_account import Credentials
 import random
 import pandas as pd
 import numpy as np
-import openpyxl
 
 # Set scope for Google IAM authentication for the APIs the program has
 # access to.
@@ -31,26 +30,27 @@ def run_intro():
     This function will introduce the user to the application
     and notifies them of the program scope.
     """
-    # Multiline print statement will show the necessary information to the user for
-    # program operation. Creating visual clarity through line separation.
+    # Multiline print statement will show the necessary information to the user
+    # for program operation. Creating visual clarity through line separation.
     print('''
-<==============================================================================================>
-Welcome to the Subshop! Coded by Gaurav Jagpal (c) 2024.
-        
-The Subshop's inventory tool will easily calculate your shop requirements so you know what 
-is needed for the next day.
-        
+<==============================================================================>
+Welcome to the Subshop! Coded by Gaurav Jagpal (c) 2024.\n
+The Subshop's inventory tool will easily calculate your shop requirements so
+you know what is needed for the next day.\n
 The Subshop tool will ask you to provide information such as:
-    - new/update (to know whether you plan on adding a new item or update an existing one)
-    - If you select "new", it will also ask you for the item name, the min stock required,
-      the time to make, cost of the item, sale price and it will calculate the profit.
-      It will then append this to the "items" tab and "stock" tab of your worksheet.
-    - If you select "update", it will automatically bring the item_code from the "items" tab,
-      it will ask you how many items were sold, the minimum stock required and then it will
-      calculate the stock on hand and the amount you need to make.
-
-<==============================================================================================>
+    - new/update (to know whether you plan on adding a new item or update an
+      existing one)
+    - If you select "new", it will also ask you for the item name, the min
+      stock required, the time to make, cost of the item, sale price. Then it
+      will calculate the profit. It will then append this to the "items" tab
+      and "stock" tab of your worksheet.
+    - If you select "update", it will automatically bring the item_code from
+      the "items" tab, it will ask you how many items were sold, the minimum
+      stock required and then it will calculate the stock on hand and the
+      amount you need to make.\n
+<==============================================================================>
     ''')
+
 
 def input_type():
     """
@@ -58,12 +58,15 @@ def input_type():
     """
     while True:
         print('Would you like to add a new item or update sales figures?')
-        data_str = input('Please enter "new" for new item or "update" for updating an item or "delete" to remove an existing item: \n')
+        data_str = input(
+            'Please enter "new" for new item or "update" for updating an item' 
+            'or "delete" to remove an existing item: \n')
 
         if validate_data(data_str):
             break
 
     return data_str
+
 
 # Giving the user more variety for initial input
 new = ["new", "NEW", "New"]
@@ -72,13 +75,15 @@ delete = ["delete", "DELETE", "Delete"]
 # Combining the options
 user_options = new + updater + delete
 
+
 def validate_data(data):
     """
     Test user input matches options provided
     """
     try:
         if data not in user_options:
-            raise ValueError(f'You entered {input}, you need to enter "new", "update" or "delete" to continue')
+            raise ValueError(f'You entered {input}, you need to enter "new",'
+                             ' "update" or "delete" to continue')
     except ValueError as e:
         print(f'Invalid data: {e}, please try again. \n')
 
@@ -94,7 +99,8 @@ def update(data):
         df = SHEET.worksheet('items')
         first_col_items = df.col_values(1)
         if item_name in first_col_items:
-            print('This item is already being produced. Please choose to update instead.')
+            print('This item is already being produced. '
+                  'Please choose to update instead.')
         else:
             item_code = item_name[0:3] + str(random.randrange(100,999))
             min_stock = int(input('Please enter the minimum stock required: \n'))
