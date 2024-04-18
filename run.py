@@ -58,7 +58,7 @@ def input_type():
     """
     while True:
         print('Would you like to add a new item or update sales figures?')
-        data_str = input('Please enter "new" for new item or "update" for updating an item: \n')
+        data_str = input('Please enter "new" for new item or "update" for updating an item or "delete" to remove an existing item: \n')
 
         if validate_data(data_str):
             break
@@ -71,8 +71,8 @@ def validate_data(data):
     Test user input matches options provided
     """
     try:
-        if (data not in ("new", "update")):
-            raise ValueError(f'You entered {input}, you need to enter "new" or "update" to continue')
+        if (data not in ("new", "update", "delete")):
+            raise ValueError(f'You entered {input}, you need to enter "new", "update" or "delete" to continue')
     except ValueError as e:
         print(f'Invalid data: {e}, please try again. \n')
 
@@ -103,43 +103,82 @@ def update(data):
             to_bake = min_stock - stock_on_hand
             stock_to_update = [item_name, item_code, sales, min_stock, stock_on_hand, to_bake]
             stock.append_row(stock_to_update)
-            return items_to_update
         
     elif data == "update":
         """
         Update existing items located in stock tab
         """
         item_name = input('Please enter product name: \n')
-        df = SHEET.worksheet('stock')
+        df = SHEET.worksheet('items')
         first_col_stock = df.col_values(1)
+        df1 = SHEET.worksheet('stock')
+        first_col_stock = df1.col_values(1)
         if item_name in first_col_stock:
             df = pd.DataFrame(items_data)
             grade = np.where(df[:][0] == item_name)
             index = (grade[0])[0]
-            item_code = (items_data[index])[1]
+            #item_code = (items_data[index])[1]
+            #User inputs
             sales = int(input('Please enter how many items were sold:\n'))
             min_stock = int(input('Please enter the minimum stock required for tomorrow:\n'))
+            bake_time_mins = int(input('How many minutes will it take to bake the item:\n'))
+            #Formulas
             stock_on_hand = min_stock - sales
             to_bake = min_stock - stock_on_hand
+            
+            
+            
+            
             stock.update_cell(index+1,3, sales)
             stock.update_cell(index+1,4, min_stock)
             stock.update_cell(index+1,5, stock_on_hand)
             stock.update_cell(index+1,6, to_bake)
+
+
+
+            #update stock page
+            df1 = pd.DataFrame(items_data)
+            grade1 = np.where(df1[:][0] == item_name)
+            index1 = (grade1[0])[0]
+            #item_code = (items_data[index1])[1]
+            stock.update_cell(index1+1,3, sales)
+            stock.update_cell(index1+1,4, min_stock)
+            stock.update_cell(index1+1,5, stock_on_hand)
+            stock.update_cell(index1+1,6, to_bake)
         else:
             print('This item is not in the current stock. Please add as a new item.\n')
         return data
     
-def reuse(data):
-    again = input('Would you like to input more data? Please enter "Yes" or any key to escape\n')
-    if again == 'yes':
-        update(data)
+#    elif data == "delete":
+#        item_name = input('Please enter the product name of what you would like to remove from your store: \n')
+#        df = SHEET.worksheet('items')
+#        first_col_items = df.col_values(1)
+#        if item_name in first_col_items:
+#            df1 = pd.DataFrame(items_data)
+#            df2 = pd.DataFrame(stock_data)
+#            grade = np.where(df1[:][0] == item_name)
+#            index = (grade[0])[0]
+#            items.delete_rows(index)
+#            stock.delete_rows(index)
+#            items2 = SHEET.worksheet('items')
+#            items_data2 = items2.get_all_values()
+#            stock2 = SHEET.worksheet('stock')
+#            stock_data2 = stock2.get_all_values()
+        
+ #       else:
+  #          print('You do not currently produce this item')
+
+
+#def reuse(data):
+#    again = input('Would you like to input more data? Please enter "Yes" or any key to escape\n')
+#    if again == 'yes':
+#        update(data)
 
 
 def return_data(stock_data):
     """
     Displays the output of the latest data set as a DataFrame
     """
-    print('Thank you for your using the tool. Please see below for the latest stock data: \n\n')
     df = pd.DataFrame(stock_data)
     print(df)
 
@@ -150,8 +189,16 @@ def main():
     run_intro()
     input = input_type()
     update(input)
+    items2 = SHEET.worksheet('items')
+    items_data2 = items2.get_all_values()
     stock2 = SHEET.worksheet('stock')
     stock_data2 = stock2.get_all_values()
+    #print('\n')
+    #print('Your store has the below requirements:')
+    #return_data(items_data2)
+    #print('\n')
+    #print('You stock is as below')
     return_data(stock_data2)
+#    reuse()
 print("Welcome to the Subshop \n")
 main()
