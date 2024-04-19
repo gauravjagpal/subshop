@@ -93,6 +93,9 @@ def validate_data(data):
 
 
 def input_int(data):
+    """
+    Validate all integer entries
+    """
     while True:
         try:
             userInput = int(input(data))
@@ -104,6 +107,9 @@ def input_int(data):
 
 
 def input_float(data):
+    """
+    Validate all float values
+    """
     while True:
         try:
             userInput = float(input(data))
@@ -130,6 +136,10 @@ def input_item(data):
 
 
 def update(data):
+    """
+    Overarching function which takes the value from the _type function
+    and uses the output to show which type of user inputs to use.
+    """
     if data in new:
         """
         Add new items into item tab
@@ -230,6 +240,10 @@ def update(data):
 
 
 def reuse():
+    """
+    At the end of the first use of the program, asks the user if
+    they want to go again
+    """
     again = input('Would you like to input more data?'
                   ' Please enter "Yes" or any key to escape\n')
     yes = ['yes', 'Yes', 'y', 'Y']
