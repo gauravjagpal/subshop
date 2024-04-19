@@ -1,8 +1,6 @@
 
 ![Image source Logo](images/subshop.png)
 
-[Image source](https://www.unileverfoodsolutions.com.au/recipe/baguette-with-roasted-salmon-and-lime-chilli-mayonnaise-R0022179.html)
-
 Program live link: The app has succesfully been deployed and can be viewed on <a href="https://subshop-ceb451619694.herokuapp.com/" target="_blank">Heroku</a>
 
 Accompanying Spreadsheet: [Google Sheets](https://docs.google.com/spreadsheets/d/18cGqHrZWaSvZ3V6-gzhmV5peyCnDMR-ogmTHfpfYHII/edit#gid=0)
@@ -39,7 +37,7 @@ Accompanying Spreadsheet: [Google Sheets](https://docs.google.com/spreadsheets/d
 * Bugs
 * Known Issues
 
-[Project Outcome Summary](#project-outcomes-summary)
+[Project Outcome Summary](#project-outcome-summary)
 
 [Deployment](#deployment)
 
@@ -50,6 +48,7 @@ Accompanying Spreadsheet: [Google Sheets](https://docs.google.com/spreadsheets/d
 [Future Ideas](#future-ideas)
 
 [Credits](#credits)
+
 ---
 
 ## Overview
@@ -210,15 +209,130 @@ Testing was thorough during development as many bugs came up. Issues as follows:
 ### Known issues
 There are no issues that have been found and are unresolved.
 
+## Project Outcome Summary
+This project was built with logical steps in mind of how a company could manage their stock, by consdering user stories at a basic level. 
+Each function was designed and built with the user in mind and how they could manipulate their data sets.
+
+Errors are managed throughout the program through validations and while loops.
+Where inputs pass the validation, they are moved onto the next stage of inputs.
+The program has not been found to crash as a result of user input.
+Exception handling is implemented to cover all of the opportunities for user input error.
+In all instances, the error and solution is communicated to the user.
+
+Throughout the code, every effort has been made to implement efficient, well documented code.
+I utilised the main() function which contained all code. This was particularly helpful when testing code-breaks.
+
+## Deployment
+The program was hosted on Heroku due to its ability to handle dynamic content.
+I integrated my code with the CI Python template to create the 'mock-terminal' feature seen on the live site.
+This feature enables users to engage directly with the code, similar to executing the run.py file in an IDE.
+
+Deploying this project involved multiple steps, which are more intricate compared to deploying from GitHub Pages.
+By adhering to these steps sequentially, you can deploy the application to the web:
+
+1. Generate a list of requirements for Heroku. These are the dependencies used in the Gitpod VS Code workspace.
+To generate, ensure there is a requirements.txt file in your project root.
+Then enter pip3 freeze > requirements.txt into your terminal.
+This will build a list of dependencies that Heroku will use to build the project.
+
+2. Make sure to save, commit, and push all files to ensure that Heroku can utilise them later on.
+
+3. Login or Sign up 
+
+4. Ensure that your account is set up correctly and your Eco Dynos plan is active in Heroku
+
+5. Select 'Create new app' from your Heroku Dashboard.
+
+6. Create a unique name for your app and select your region. Select 'Create app'.
+
+7. Select 'Reveal Config Vars'. Here you will add KEY:VALUE pairs to adjust app behaviour.
+Remember that there is an untracked file in the project containing credentials for API function.
+    1. 'KEY' = CREDS
+    2. 'VALUE' = Paste from your CREDS.json file.
+    3. Select 'Add'
+    4. 'KEY' = PORT
+    5. 'VALUE' = 8000
+    6. Select 'Add'
+
+8. Select 'Add buildpack'. Add the following buildpack in order.
+These can be re-ordered by drag-and-drop if needed.
+    1. heroku/python
+    2. heroku/nodejs
+
+9. In the "Deploy" tab. Under 'Deployment method', select 'GitHub' and proceed to follow the prompts to establish a connection.
+
+10. When the correct repo is located, select 'Connect'.
+
+11. Finally, under "Manual deploy", select the correct branch and click 'Deploy Branch'.
+A build log will begin running. A link will be provided to the site after this process.
+
+12. Click the "View" button to view the deployed app.
 
 
+## Cloning and Forking
+### How to Clone
+
+To clone the repository:
+
+1. Login (or signup) to Github.
+2. Go to my repository for the project, [gauravjagpal/subshop](https://github.com/gauravjagpal/subshop).
+3. Click on the Green code button, choose whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
+4. Launch the terminal within your code editor and set the current working directory to the desired location for the cloned directory.
+5. Type 'git clone' into the terminal and then paste the link you copied in step 3. Press enter.
+
+### How to Fork
+
+To fork the repository:
+
+1. Login (or signup) to Github.
+2. Go to my repository for the project, [gauravjagpal/subshop](https://github.com/gauravjagpal/subshop).
+3. Click the Fork button in the top right corner.
 
 
+## Technologies Used
+[Code Institute Python Template](https://github.com/Code-Institute-Org/python-essentials-template)
+\- This formed the foundation for the project, which integrated with the CI mock
+terminal that the project is presented in.
+IDE: VS Code in [Gitpod](https://www.gitpod.io/)
 
+[Google Account](https://www.google.com/account/about/?hl=en-US) Services for
+ API integration:
 
+- Google Cloud
+- Google Sheets
+- Google Drive
 
+Deployment Platform: [Heroku](https://www.heroku.com/)
 
+Flowchart Editor: [draw.io](https://app.diagrams.net/)
 
+Language: Python 3.8.11
+
+Python Libraries - latest versions imported and installed from terminal:
+
+- [gspread](https://docs.gspread.org/en/latest/) - The basis of the Google Sheets
+  integration
+
+- [google-auth.Credentials](https://google-auth.readthedocs.io/en/stable/reference/google.auth.credentials.html)
+  \- For authorizing gspread scope in the Google Sheets API
+
+- [pandas](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html) - for its
+  [list flattening method](https://numpy.org/doc/stable/reference/generated/numpy.concatenate.html)
+
+- [numpy](https://numpy.org/doc/stable/index.html) - for working with data sets
+
+## Future Ideas
+
+Future ideas I have had for this project are as follows:
+1. Create user accounts so you can see the user who last edited it
+2. Create an sales tab so each sales data is appended for storage purposes
+3. Add a feature to print out what the user input and then ask for confirmation
+
+## Credits
+Sites used:
+1. [Google Sheets - subshop dataset](https://docs.google.com/spreadsheets/d/18cGqHrZWaSvZ3V6-gzhmV5peyCnDMR-ogmTHfpfYHII/edit#gid=480423322)
+2. [CI Python Linter](https://pep8ci.herokuapp.com/)
+3. [Image for README](https://www.unileverfoodsolutions.com.au/recipe/baguette-with-roasted-salmon-and-lime-chilli-mayonnaise-R0022179.htm)
 
 
 
