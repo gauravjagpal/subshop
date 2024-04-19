@@ -126,7 +126,7 @@ def input_item(data):
             return user_input
         else:
             print("Invalid input! Please enter something"
-                  "other than white space.")
+                  " other than white space.")
 
 
 def update(data):
@@ -210,7 +210,7 @@ def update(data):
             stock.update_cell(index1+1, 7, total_profit)
         else:
             print('This item is not in the current stock.'
-                  'Please add as a new item.\n')
+                  ' Please add as a new item.\n')
         return data
     elif data in delete:
         item_name = input('Please enter the product name of what you'
