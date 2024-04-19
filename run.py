@@ -93,40 +93,55 @@ def validate_data(data):
 
 
 def input_int(data):
-  while True:
-    try:
-       userInput = int(input(data))       
-    except ValueError:
-       print("Not an integer! Try again.")
-       continue
-    else:
-       return userInput
-    
+    while True:
+        try:
+            userInput = int(input(data))
+        except ValueError:
+            print("Not an integer! Try again.")
+            continue
+        else:
+            return userInput
+
 
 def input_float(data):
-  while True:
-    try:
-       userInput = float(input(data))       
-    except ValueError:
-       print("Please enter a number.")
-       continue
-    else:
-       return userInput
-     
+    while True:
+        try:
+            userInput = float(input(data))
+        except ValueError:
+            print("Please enter a number.")
+            continue
+        else:
+            return userInput
+
+
+def input_item(data):
+    """
+    Testing user input to make sure they do not enter an empty
+    string or a blank string.
+    """
+
+    while True:
+        user_input = input(data)
+        if user_input.strip() != '':
+            return user_input
+        else:
+            print("Invalid input! Please enter something"
+                  "other than white space.")
+
 
 def update(data):
     if data in new:
         """
         Add new items into item tab
         """
-        item_name = input('Please enter product name: \n')
+        item_name = input_item('Please enter product name: \n')
         df = SHEET.worksheet('items')
         first_col_items = df.col_values(1)
         if item_name in first_col_items:
             print('This item is already being produced. '
                   'Please choose to update instead.')
         else:
-            item_code = item_name[0:3] + str(random.randrange(100, 999))
+            item_code = str(item_name[0:3]) + str(random.randrange(100, 999))
             min_stock = input_int('Please enter the minimum stock required:'
                                   '\n')
             make_time_mins = input_int('Please enter how long the item takes'
@@ -228,6 +243,7 @@ def return_data(stock_data):
     """
     df = pd.DataFrame(stock_data)
     print(df)
+
 
 def main():
     """
