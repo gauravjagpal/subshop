@@ -80,13 +80,13 @@ The program refers to two sheets. An item and stock sheet which are updated depe
 <details>
 <summary>Items reference sheet</summary>
 
-![items](images/items.png)
+![items](/images/items.png)
 </details>
 
 <details>
 <summary>Stock reference sheet</summary>
 
-![stock](images/stock.png)
+![stock](/images/stock.png)
 </details>
 
 It is important to note that the naming conventions in the worksheets must be followed, as the app relies on worksheet data and user inputs to function.
@@ -129,7 +129,7 @@ At this point I decided I also needed to add "*import pandas as pd* and *import 
 <details>
 <summary>Flow Chart</summary>
 
-![flowchart](images/flowchart.png)
+![flowchart](/images/flowchart.png)
 </details>
 
 ## Features
@@ -139,7 +139,7 @@ This section will cover how and why each step in the program is included. The be
 
 On program start, the user will be presented with the option to add a new item, update or delete an existing one. 
 
-![intro](images/intro.png)
+![intro](/images/intro.png)
 
 #### Add a new item:
 The below screen shot is the options provided to the user to add a new item. In order, they will be asked to input:
@@ -151,7 +151,7 @@ The below screen shot is the options provided to the user to add a new item. In 
 
 Output: These inputs will be appended to the "items" tab and the "stock" tab in the worksheet.
 
-![new inputs](images/new-inputs.png)
+![new inputs](/images/new-inputs.png)
 
 #### Update an item
 The below screen shot is the options provided to the user to update an item. In order, they will be asked to input:
@@ -162,7 +162,7 @@ The below screen shot is the options provided to the user to update an item. In 
 * The cost to prepare the item
 * How much the item sells for
 
-![update inputs](images/update-inputs.png)
+![update inputs](/images/update-inputs.png)
 
 Output: The items row will be updated in the "stock" tab
 
@@ -172,17 +172,17 @@ The below screen shot is the options provided to the user to update an item. In 
 
 Output: This will delete the row requested, from both the "stock" and "items" tabs.
 
-![delete inputs](images/delete-inputs.png)
+![delete inputs](/images/delete-inputs.png)
 
 #### Final output
 
 Regardless of which options are chosen. The user will see the current status of both sheets, as seen below:
 
 #### Items table:
-![Items Table](images/output-table1.png)
+![Items Table](/images/output-table1.png)
 
 #### Stock table:
-![Stock Table](images/output-table2.png)
+![Stock Table](/images/output-table2.png)
 
 
 
@@ -197,7 +197,7 @@ By following best practice guidelines throughout development, my code has fully
 passed through the [CI Python Linter](https://pep8ci.herokuapp.com/) with no errors found.
 This can be verified by pasting the 'run.py' file through the CI Python Linter link:
 
-![PEP8 Validator](images/pep8-validator.png)
+![PEP8 Validator](/images/pep8-validator.png)
 
 ## Bugs and Known issues
 ### Bugs
