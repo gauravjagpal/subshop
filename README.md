@@ -55,7 +55,7 @@ Accompanying Spreadsheet: [Google Sheets](https://docs.google.com/spreadsheets/d
 
 ## Overview
 
-Welcome to the Subshop,
+<a href="https://subshop-ceb451619694.herokuapp.com/" target="_blank">Welcome to the Subshop,</a>
 
 This app is a data-driven Python program which is integrated with Google Sheets. The aim is to boost efficiency in the store for daily tasks, by helping keep track of what is needed for the next day.
 
