@@ -49,6 +49,8 @@ Accompanying Spreadsheet: [Google Sheets](https://docs.google.com/spreadsheets/d
 
 [Credits](#credits)
 
+[Acknowledgement](#acknowledgement)
+
 ---
 
 ## Overview
@@ -330,6 +332,7 @@ Future ideas I have had for this project are as follows:
 1. Create user accounts so you can see the user who last edited it
 2. Create an sales tab so each sales data is appended for storage purposes
 3. Add a feature to print out what the user input and then ask for confirmation
+4. In the initial design there was an idea to loop back to the start of the program. This was removed at a latter stage and would be reimplemented with full functionality.
 
 ## Credits
 Sites used:
@@ -337,30 +340,7 @@ Sites used:
 2. [CI Python Linter](https://pep8ci.herokuapp.com/)
 3. [Image for README](https://www.unileverfoodsolutions.com.au/recipe/baguette-with-roasted-salmon-and-lime-chilli-mayonnaise-R0022179.htm)
 
+## Acknowledgement
+Stack-overflow for helping me figure out solutions when I was hitting a block
 
-
-
-
-
-## Reminders
-
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
-
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python![alt text](image.png)`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+And a massive thank you to my mentor, Jubril, for reviewing and providing feedback on my code
