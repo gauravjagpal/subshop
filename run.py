@@ -238,19 +238,6 @@ def update(data):
     else:
         print('You do not currently produce this item')
 
-
-def reuse():
-    """
-    At the end of the first use of the program, asks the user if
-    they want to go again
-    """
-    again = input('Would you like to input more data?'
-                  ' Please enter "Yes" or any key to escape\n')
-    yes = ['yes', 'Yes', 'y', 'Y']
-    if again in yes:
-        main()
-
-
 def return_data(stock_data):
     """
     Displays the output of the latest data set as a DataFrame
@@ -275,7 +262,6 @@ def main():
     print('\n')
     print('You store has the below requirements')
     return_data(stock_data2)
-    reuse()
 
 
 # Run intro first as if the user wants to reuse the tool,
@@ -283,3 +269,4 @@ def main():
 run_intro()
 print("Welcome to the Subshop \n")
 main()
+print('Thank you for using the Subshop tool!')
